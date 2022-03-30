@@ -30,7 +30,8 @@ public class Tile extends StackPane {
                 Tile source = (Tile) e.getSource();
                 gameController.player1Move(source);
 
-                gameController.player2Move(source);
+                Tile source1 = (Tile) e.getSource();
+                gameController.player2Move(source1);
             } else {
                 Tile source = (Tile) e.getSource();
                 gameController.player1Move(source);

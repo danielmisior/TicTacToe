@@ -152,22 +152,26 @@ public class GameController {
         alert.setHeaderText("Round #" + roundsCounter);
 
         if(player1IsWinner()) {
-            roundsCounter++;
-            player1WinsCounter++;
             if(playerIsOpponent) {
+                roundsCounter++;
+                player1WinsCounter++;
                 message = "X won this round. Total X wins: " + player1WinsCounter;
             }
             else{
+                roundsCounter++;
+                player1WinsCounter++;
                 message = "Player won this round. Total Player wins: " + player1WinsCounter;
             }
         }
         else if(player2IsWinner()) {
-            roundsCounter++;
-            player2WinsCounter++;
             if(playerIsOpponent) {
-            message = "O won this round. Total O wins: " + player2WinsCounter;
+                roundsCounter++;
+                player2WinsCounter++;
+                message = "O won this round. Total O wins: " + player2WinsCounter;
             }
             else  {
+                roundsCounter++;
+                player2WinsCounter++;
                 message = "Computer won this round. Total Computer wins: " + player2WinsCounter;
             }
         }
@@ -201,11 +205,11 @@ public class GameController {
 
         if(playerIsOpponent) {
             if(player1WinsCounter > player2WinsCounter) {
-                alert.setHeaderText("First Player won!");
+                alert.setHeaderText("X won!");
                 message = "Would you like to play again?";
             }
             else if (player1WinsCounter < player2WinsCounter){
-                alert.setHeaderText("Second Player won!");
+                alert.setHeaderText("O won!");
                 message = "Would you like to play again?";
             }
             else {
@@ -227,6 +231,7 @@ public class GameController {
                 message = "Would you like to play again?";
             }
         }
+
         alert.setContentText(message);
 
         Optional<ButtonType> result = alert.showAndWait();

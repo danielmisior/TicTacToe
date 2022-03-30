@@ -24,6 +24,7 @@ public class GameController {
     Stage appStage;
     Integer requestedRound;
     boolean playerIsOpponent;
+    int player2 = 1;
 
     public GameController(GridPane root) {
         this.root = root;
@@ -82,21 +83,32 @@ public class GameController {
         return result;
     }
 
-    public void player1Move(Tile tile) {
-        if (!ifFieldWasUsed(tile)) {
-            tile.text.setText(x);
-            markedTilesX.add(tile.fieldNumber);
-            checkResult(markedTilesX);
-        }
-    }
+    public void makePlayersMove(Tile tile) {
 
-    public void player2Move(Tile tile) {
-        if (!ifFieldWasUsed(tile)) {
-            tile.text.setText(o);
-            markedTilesO.add(tile.fieldNumber);
-            checkResult(markedTilesO);
-        }
-    }
+        if(playerIsOpponent) {
+
+            if (!ifFieldWasUsed(tile)) {
+                if ((player2 % 2) != 0) {
+
+                tile.text.setText(x);
+                markedTilesX.add(tile.fieldNumber);
+                checkResult(markedTilesX);
+
+                }
+                else {
+
+                    tile.text.setText(o);
+                    markedTilesO.add(tile.fieldNumber);
+                    checkResult(markedTilesO);
+
+                }
+            }
+        } else {
+                    tile.text.setText(x);
+                    markedTilesX.add(tile.fieldNumber);
+                    checkResult(markedTilesX);
+                }
+            }
 
     public void computerMove() {
         List<Tile> tiles = root.getChildren().stream()
@@ -123,6 +135,7 @@ public class GameController {
     }
 
     public boolean player1IsWinner() {
+
         boolean result = combinationsOfWinning.stream()
                 .anyMatch(combination -> markedTilesX.containsAll(combination));
         return result;

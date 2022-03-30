@@ -24,17 +24,15 @@ public class Tile extends StackPane {
         getChildren().addAll(border, text);
 
         setOnMouseClicked(e -> {
-           /* Tile source1 = (Tile) e.getSource();
-            gameController.player1Move(source1); */
+
             if(gameController.playerIsOpponent) {
                 Tile source = (Tile) e.getSource();
-                gameController.player1Move(source);
+                gameController.makePlayersMove(source);
+                gameController.player2++;
 
-                Tile source1 = (Tile) e.getSource();
-                gameController.player2Move(source1);
             } else {
                 Tile source = (Tile) e.getSource();
-                gameController.player1Move(source);
+                gameController.makePlayersMove(source);
 
                 gameController.computerMove();
                 }

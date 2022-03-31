@@ -24,7 +24,7 @@ public class GameController {
     Stage appStage;
     Integer requestedRound;
     boolean playerIsOpponent;
-    int player2 = 1;
+    boolean xPlayer = true;
 
     public GameController(GridPane root) {
         this.root = root;
@@ -88,11 +88,12 @@ public class GameController {
         if(playerIsOpponent) {
 
             if (!ifFieldWasUsed(tile)) {
-                if ((player2 % 2) != 0) {
+                if (xPlayer) {
 
                 tile.text.setText(x);
                 markedTilesX.add(tile.fieldNumber);
                 checkResult(markedTilesX);
+                xPlayer = false;
 
                 }
                 else {
@@ -100,15 +101,17 @@ public class GameController {
                     tile.text.setText(o);
                     markedTilesO.add(tile.fieldNumber);
                     checkResult(markedTilesO);
-
+                    xPlayer = true;
                 }
             }
         } else {
-                    tile.text.setText(x);
-                    markedTilesX.add(tile.fieldNumber);
-                    checkResult(markedTilesX);
-                }
+            if(!ifFieldWasUsed(tile)){
+                tile.text.setText(x);
+                markedTilesX.add(tile.fieldNumber);
+                checkResult(markedTilesX);
             }
+        }
+    }
 
     public void computerMove() {
         List<Tile> tiles = root.getChildren().stream()
@@ -251,6 +254,7 @@ public class GameController {
         if(result.get() == ButtonType.OK) {
             this.markedTilesX = new HashSet<>();
             this.markedTilesO = new HashSet<>();
+
             for(int i = 0; i < root.getChildren().size(); i++) {
                 ((Tile) root.getChildren().get(i)).text.setText("");
             }

@@ -28,7 +28,6 @@ public class Tile extends StackPane {
             if(gameController.playerIsOpponent) {
                 Tile source = (Tile) e.getSource();
                 gameController.makePlayersMove(source);
-                gameController.player2++;
 
             } else {
                 Tile source = (Tile) e.getSource();

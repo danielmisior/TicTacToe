@@ -60,15 +60,14 @@ public class TicTacToeApp extends Application {
 
         b1.setOnAction(e -> {
             gameController.requestedRound = Integer.valueOf(textField.getText());
-            //System.out.println(textField.getText());
-           /* stage.close();
+           /* System.out.println(textField.getText());
+            stage.close();
             stage.setScene(appScene);
             stage.show(); */
         });
         b2.setOnAction(e -> {
             gameController.requestedRound = Integer.valueOf(textField.getText());
             System.out.println(textField.getText());
-           // gameController.playerIsOpponent = true;
             stage.close();
             stage.setScene(appScene);
             stage.show();
@@ -76,7 +75,6 @@ public class TicTacToeApp extends Application {
         });
         b3.setOnAction(e -> {
             gameController.requestedRound = Integer.valueOf(textField.getText());
-           // gameController.playerIsOpponent = false;
             stage.close();
             stage.setScene(appScene);
             stage.show();

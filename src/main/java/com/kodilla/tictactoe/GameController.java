@@ -21,7 +21,7 @@ public class GameController {
     private Integer player2WinsCounter = 0;
     private Integer drawsCounter = 0;
     private Integer roundsCounter = 1;
-    Stage appStage;
+    static Stage appStage;
     Integer requestedRound;
     boolean playerIsOpponent;
     boolean xPlayer = true;

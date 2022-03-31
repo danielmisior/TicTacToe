@@ -97,7 +97,6 @@ public class GameController {
 
                 }
                 else {
-
                     tile.text.setText(o);
                     markedTilesO.add(tile.fieldNumber);
                     checkResult(markedTilesO);
@@ -150,14 +149,8 @@ public class GameController {
         return result;
     }
 
-    public boolean computerIsWinner() {
-        boolean result = combinationsOfWinning.stream()
-                .anyMatch(combination -> markedTilesO.containsAll(combination));
-        return result;
-    }
-
     public void checkResult(Set<Integer> hashSet) {
-        if(draw() || player1IsWinner() || player2IsWinner() || computerIsWinner()) {
+        if(draw() || player1IsWinner() || player2IsWinner()) {
             endOfRound();
         }
     }

@@ -9,8 +9,8 @@ import javafx.scene.text.Text;
 
 public class Tile extends StackPane {
 
-    int fieldNumber;
-    Text text = new Text();
+    private int fieldNumber;
+    private Text text = new Text();
 
     public Tile(GameController gameController) {
 
@@ -41,5 +41,13 @@ public class Tile extends StackPane {
 
     public int getFieldNumber() {
         return fieldNumber;
+    }
+
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
+    }
+
+    public Text getText() {
+        return text;
     }
 }

@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 public class TicTacToeApp extends Application {
 
     private static GridPane root;
@@ -32,7 +33,7 @@ public class TicTacToeApp extends Application {
                 tile.setTranslateX(j * 200);
                 tile.setTranslateY(i * 200);
                 tileCounter++;
-                tile.fieldNumber = tileCounter;
+                tile.setFieldNumber(tileCounter);
 
                 root.getChildren().add(tile);
             }
@@ -60,19 +61,28 @@ public class TicTacToeApp extends Application {
         sceneWithButtons = new Scene(layout, 400, 400);
 
         vsPlayer.setOnAction(e -> {
-            gameController.requestedRound = Integer.valueOf(textField.getText());
-            System.out.println(textField.getText());
-            stage.close();
-            stage.setScene(appScene);
-            stage.show();
-            gameController.playerIsOpponent = true;
+            try{
+                gameController.requestedRound = Integer.valueOf(textField.getText());
+                stage.close();
+                stage.setScene(appScene);
+                stage.show();
+                gameController.playerIsOpponent = true;
+            }
+            catch (Exception exception) {
+                System.out.println("You have to enter a number!");
+            }
         });
         vsComputer.setOnAction(e -> {
-            gameController.requestedRound = Integer.valueOf(textField.getText());
-            stage.close();
-            stage.setScene(appScene);
-            stage.show();
-            gameController.playerIsOpponent = false;
+            try {
+                gameController.requestedRound = Integer.valueOf(textField.getText());
+                stage.close();
+                stage.setScene(appScene);
+                stage.show();
+                gameController.playerIsOpponent = false;
+            }
+            catch (Exception exception) {
+                System.out.println("You have to enter a number!");
+            }
         });
         return sceneWithButtons;
     }

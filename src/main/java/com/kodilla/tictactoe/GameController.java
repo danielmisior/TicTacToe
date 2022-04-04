@@ -89,15 +89,14 @@ public class GameController {
 
             if (!ifFieldWasUsed(tile)) {
                 if (xPlayer) {
-
-                tile.text.setText(x);
+                tile.getText().setText(x);
                 markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
                 xPlayer = false;
 
                 }
                 else {
-                    tile.text.setText(o);
+                    tile.getText().setText(o);
                     markedTilesO.add(tile.getFieldNumber());
                     checkResult(markedTilesO);
                     xPlayer = true;
@@ -105,7 +104,7 @@ public class GameController {
             }
         } else {
             if(!ifFieldWasUsed(tile)){
-                tile.text.setText(x);
+                tile.getText().setText(x);
                 markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
             }
@@ -116,14 +115,14 @@ public class GameController {
         List<Tile> tiles = root.getChildren().stream()
                 .filter(n -> n instanceof Tile)
                 .map(n -> ((Tile) n))
-                .filter(tile -> tile.text.getText().equals(""))
+                .filter(tile -> tile.getText().getText().equals(""))
                 .collect(Collectors.toList());
 
         Random random = new Random();
         int indexOfComputerMove = random.nextInt(tiles.size());
 
         Tile tile = tiles.get(indexOfComputerMove);
-        tile.text.setText(o);
+        tile.getText().setText(o);
         markedTilesO.add(tile.getFieldNumber());
         checkResult(markedTilesO);
     }
@@ -196,7 +195,7 @@ public class GameController {
             this.markedTilesX = new HashSet<>();
             this.markedTilesO = new HashSet<>();
             for(int i = 0; i < root.getChildren().size(); i++) {
-                ((Tile) root.getChildren().get(i)).text.setText("");
+                ((Tile) root.getChildren().get(i)).getText().setText("");
             }
         }
         else {
@@ -249,7 +248,7 @@ public class GameController {
             this.markedTilesO = new HashSet<>();
 
             for(int i = 0; i < root.getChildren().size(); i++) {
-                ((Tile) root.getChildren().get(i)).text.setText("");
+                ((Tile) root.getChildren().get(i)).getText().setText("");
             }
             appStage.setScene(TicTacToeApp.createAppScene(appStage));
         } else  {

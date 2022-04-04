@@ -25,6 +25,7 @@ public class GameController {
     Integer requestedRound;
     boolean playerIsOpponent;
     boolean xPlayer = true;
+    boolean computerTurn;
 
     public GameController(GridPane root) {
         this.root = root;
@@ -86,14 +87,12 @@ public class GameController {
     public void makePlayersMove(Tile tile) {
 
         if(playerIsOpponent) {
-
             if (!ifFieldWasUsed(tile)) {
                 if (xPlayer) {
                 tile.getText().setText(x);
                 markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
                 xPlayer = false;
-
                 }
                 else {
                     tile.getText().setText(o);
@@ -107,6 +106,7 @@ public class GameController {
                 tile.getText().setText(x);
                 markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
+                computerTurn = true;
             }
         }
     }
@@ -125,6 +125,7 @@ public class GameController {
         tile.getText().setText(o);
         markedTilesO.add(tile.getFieldNumber());
         checkResult(markedTilesO);
+        computerTurn = false;
     }
 
     public boolean draw() {

@@ -34,8 +34,10 @@ public class Tile extends StackPane {
                 Tile source = (Tile) e.getSource();
                 gameController.makePlayersMove(source);
 
+                if(gameController.computerTurn) {
                 gameController.computerMove();
                 }
+            }
         });
     }
 

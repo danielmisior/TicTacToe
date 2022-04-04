@@ -23,6 +23,7 @@ public class Tile extends StackPane {
         setAlignment(Pos.CENTER);
         getChildren().addAll(border, text);
 
+
         setOnMouseClicked(e -> {
 
             if(gameController.playerIsOpponent) {
@@ -36,5 +37,9 @@ public class Tile extends StackPane {
                 gameController.computerMove();
                 }
         });
+    }
+
+    public int getFieldNumber() {
+        return fieldNumber;
     }
 }

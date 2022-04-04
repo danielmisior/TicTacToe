@@ -79,7 +79,7 @@ public class GameController {
     }
 
     public boolean ifFieldWasUsed (Tile tile) {
-        boolean result = markedTilesX.contains(tile.fieldNumber) || markedTilesO.contains(tile.fieldNumber);
+        boolean result = markedTilesX.contains(tile.getFieldNumber()) || markedTilesO.contains(tile.getFieldNumber());
         return result;
     }
 
@@ -91,14 +91,14 @@ public class GameController {
                 if (xPlayer) {
 
                 tile.text.setText(x);
-                markedTilesX.add(tile.fieldNumber);
+                markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
                 xPlayer = false;
 
                 }
                 else {
                     tile.text.setText(o);
-                    markedTilesO.add(tile.fieldNumber);
+                    markedTilesO.add(tile.getFieldNumber());
                     checkResult(markedTilesO);
                     xPlayer = true;
                 }
@@ -106,7 +106,7 @@ public class GameController {
         } else {
             if(!ifFieldWasUsed(tile)){
                 tile.text.setText(x);
-                markedTilesX.add(tile.fieldNumber);
+                markedTilesX.add(tile.getFieldNumber());
                 checkResult(markedTilesX);
             }
         }
@@ -124,7 +124,7 @@ public class GameController {
 
         Tile tile = tiles.get(indexOfComputerMove);
         tile.text.setText(o);
-        markedTilesO.add(tile.fieldNumber);
+        markedTilesO.add(tile.getFieldNumber());
         checkResult(markedTilesO);
     }
 

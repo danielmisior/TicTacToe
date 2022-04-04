@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -45,27 +46,20 @@ public class TicTacToeApp extends Application {
         Scene sceneWithButtons;
         FlowPane pane = new FlowPane();
         TextField textField = new TextField();
+        Label label = new Label("How many rounds would you like to play?");
 
-        Button b1 = new Button("How many rounds would you like to play?");
-        Button b2 = new Button("Player vs Player");
-        Button b3 = new Button("Player vs Computer");
-        pane.getChildren().addAll(b2, b3);
+        Button vsPlayer = new Button("Player vs Player");
+        Button vsComputer = new Button("Player vs Computer");
+        pane.getChildren().addAll(vsPlayer, vsComputer);
 
         VBox layout = new VBox(10);
         Insets insets = new Insets(40, 40, 40, 40);
         layout.setPadding(insets);
-        layout.getChildren().addAll(textField, b1, pane);
+        layout.getChildren().addAll(label, textField, pane);
 
         sceneWithButtons = new Scene(layout, 400, 400);
 
-        b1.setOnAction(e -> {
-            gameController.requestedRound = Integer.valueOf(textField.getText());
-           /* System.out.println(textField.getText());
-            stage.close();
-            stage.setScene(appScene);
-            stage.show(); */
-        });
-        b2.setOnAction(e -> {
+        vsPlayer.setOnAction(e -> {
             gameController.requestedRound = Integer.valueOf(textField.getText());
             System.out.println(textField.getText());
             stage.close();
@@ -73,7 +67,7 @@ public class TicTacToeApp extends Application {
             stage.show();
             gameController.playerIsOpponent = true;
         });
-        b3.setOnAction(e -> {
+        vsComputer.setOnAction(e -> {
             gameController.requestedRound = Integer.valueOf(textField.getText());
             stage.close();
             stage.setScene(appScene);
